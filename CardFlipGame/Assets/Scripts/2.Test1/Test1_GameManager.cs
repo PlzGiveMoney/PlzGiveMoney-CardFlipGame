@@ -6,7 +6,7 @@ using UnityEngine.UI; // Ãß°¡
 public class Test1_GameManager : MonoBehaviour
 {
     public Text timeTxt;
-    float time = 0.00f;
+    float time = 30.00f;
     public static Test1_GameManager Instance;
 
     public Test1_Card firstCard;
@@ -15,7 +15,7 @@ public class Test1_GameManager : MonoBehaviour
     public int cardCount = 0;
     public GameObject endTxt;
 
-    public float limitTime = 30.0f;
+    public float limitTime = 00.0f;
 
     void Awake()
     {
@@ -24,25 +24,37 @@ public class Test1_GameManager : MonoBehaviour
             Instance = this;
         }
     }
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+        PlayBackgroundMusic();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Time.timeScale = 1.0f;
-        time += Time.deltaTime;
+
+        time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
         isTimeCheck();
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        Test1_SoundControl.Instance.PlayStageMusic();
     }
 
     public void isMatched()
     {
         if (firstCard.index == secondCard.index)
         {
+            Test1_SoundControl.Instance.successSFXPlay();
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
             if (cardCount == 0)
             {
+                Test1_SoundControl.Instance.stageClearSFXPlay();
                 endTxt.SetActive(true);
                 Time.timeScale = 0.0f;
             }
@@ -51,6 +63,7 @@ public class Test1_GameManager : MonoBehaviour
         {
         firstCard.CloseCard();
         secondCard.CloseCard();
+        Test1_SoundControl.Instance.missSFXPlay();
         }
         firstCard = null;
         secondCard = null;
@@ -58,26 +71,17 @@ public class Test1_GameManager : MonoBehaviour
 
     public void isTimeCheck()
     {
-        if(time >= limitTime)
+        if (time < 10.0f)
         {
+            Test1_SoundControl.Instance.audioSource.pitch = 2f;
+        }
+
+        if (time <= limitTime)
+        {
+            Test1_SoundControl.Instance.stageFailSFXPlay();
             endTxt.SetActive(true);
             Time.timeScale = 0.0f;
         }
     }
 
-    public void checkMatched()
-    {
-        if(firstCard.index == secondCard.index)
-        {
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
-        }
-        else
-        {
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
-        }
-        firstCard = null;
-        secondCard = null;
-    }
 }

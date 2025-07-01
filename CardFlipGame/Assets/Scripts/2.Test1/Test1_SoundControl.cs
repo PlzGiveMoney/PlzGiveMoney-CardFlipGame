@@ -1,0 +1,99 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Test1_SoundControl : MonoBehaviour
+{
+    public AudioSource audioSource;
+    public AudioSource sfxSource;
+
+    public AudioClip backGroundMusic;
+    public AudioClip cardFlipSFX;
+    public AudioClip successSFX;
+    public AudioClip missSFX;
+    public AudioClip stageClearSFX;
+    public AudioClip stageFailSFX;
+    public AudioClip creadtCardSFX;
+
+    public Slider volumeSlider;
+    public Slider sfxvolumeSlider;
+
+    public static Test1_SoundControl Instance;
+
+    private void Awake()
+    {
+        Init();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    public void Init()
+    {
+        audioSource.volume = 0.1f;
+        sfxSource.volume = 0.7f;
+        /*옵션에 볼륨 슬라이더 추가시
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+            if (gameData != null)
+                volumeSlider.value = gameData.bgmVolume;
+            else
+            {
+                volumeSlider.onValueChanged.AddListener(SetVolume);
+                volumeSlider.value = 0.5f;
+            }
+        }
+
+        if (sfxvolumeSlider != null)
+        {
+            sfxvolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+            sfxvolumeSlider.value = 0.5f;
+        }
+        if (sfxSource != null)
+            sfxSource.volume = 0.5f;
+        */
+    }
+
+    public void PlayStageMusic()
+    {
+        audioSource.clip = backGroundMusic;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
+    }
+
+    public void SetVolume(float value)
+    {
+        audioSource.volume = value;
+    }
+
+    // SFX 볼륨 조절 메서드 추가
+    public void SetSFXVolume(float value)
+    {
+        sfxSource.volume = value;
+    }
+
+    public void cardFlipSFXPlay() => PlaySFX(cardFlipSFX);
+    public void successSFXPlay() => PlaySFX(successSFX);
+    public void missSFXPlay() => PlaySFX(missSFX);
+    public void stageClearSFXPlay() => PlaySFX(stageClearSFX);
+    public void stageFailSFXPlay() => PlaySFX(stageFailSFX);
+    public void creadtCardSFXPlay() => PlaySFX(creadtCardSFX);
+}

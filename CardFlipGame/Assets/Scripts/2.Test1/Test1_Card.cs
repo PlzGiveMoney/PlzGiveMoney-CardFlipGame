@@ -16,6 +16,8 @@ public class Test1_Card : MonoBehaviour
     }
     public void OpenCard()
     {
+        Test1_SoundControl.Instance.cardFlipSFXPlay();
+
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
@@ -30,15 +32,15 @@ public class Test1_Card : MonoBehaviour
             Test1_GameManager.Instance.isMatched();
         }
     }
-
+    /*
     public void Setting(int idx)
     {
         index = idx;
-        string rtanName = $"package/Images/rtan{index}";
+        string rtanName = $"package/Images_1/jinwoo{index}";
         frontImage = transform.Find("Front").GetComponent<SpriteRenderer>();
         frontImage.sprite = Resources.Load<Sprite>(rtanName);
     }
-
+    */
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1.0f);
