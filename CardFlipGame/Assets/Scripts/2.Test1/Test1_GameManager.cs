@@ -15,6 +15,8 @@ public class Test1_GameManager : MonoBehaviour
     public int cardCount = 0;
     public GameObject endTxt;
 
+    public float limitTime = 30.0f;
+
     void Awake()
     {
         if (Instance == null)
@@ -28,6 +30,7 @@ public class Test1_GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+        isTimeCheck();
     }
 
     public void isMatched()
@@ -50,6 +53,15 @@ public class Test1_GameManager : MonoBehaviour
         }
         firstCard = null;
         secondCard = null;
+    }
+
+    public void isTimeCheck()
+    {
+        if(time >= limitTime)
+        {
+            endTxt.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
     }
 
     public void checkMatched()

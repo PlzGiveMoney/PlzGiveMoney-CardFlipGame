@@ -5,7 +5,6 @@ using System.Linq;
 
 public class Text1_Board : MonoBehaviour
 {
-    public Transform cards;
     public GameObject card; // 오타 수정
 
     // Start is called before the first frame update
@@ -16,8 +15,6 @@ public class Text1_Board : MonoBehaviour
         for (int i = 0; i < 16; i++)
         {
             GameObject go = Instantiate(card);
-            go.transform.parent = cards;
-
             float x = (i % 4) * 1.4f-2.1f;
             float y = (i / 4) * 1.4f-3.0f;
             go.transform.position = new Vector2(x, y);
