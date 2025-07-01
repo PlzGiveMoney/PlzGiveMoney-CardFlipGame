@@ -24,6 +24,7 @@ public class Test1_GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
     // Update is called once per frame
     void Update()
     {
