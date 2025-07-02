@@ -1,31 +1,32 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System.Collections.Generic; // List를 사용하려고
 
 public class SpriteListSOGenerator
 {
-    [MenuItem("CardFlipGame/Generate SpriteListSO from Images_1")]
+    [MenuItem("CardFlipGame/Generate SpriteListSO from Images_1")] //상단 메뉴에 추가
     public static void GenerateSO()
     {
+        string assetPath = "Assets/Scripts/2.Test1/SpriteListSO.asset";
+        SpriteListSO so = AssetDatabase.LoadAssetAtPath<SpriteListSO>(assetPath);
+
         // Resources 경로 기준
         string resourcePath = "package/Images_1";
         Sprite[] sprites = Resources.LoadAll<Sprite>(resourcePath);
 
-        if (sprites == null || sprites.Length == 0)
+        if (so == null) //SO파일이 없다면 생성
         {
-            Debug.LogWarning("Sprites not found in Resources/package/Images_1");
-            return;
+            so = ScriptableObject.CreateInstance<SpriteListSO>();
+            AssetDatabase.CreateAsset(so, assetPath);//괄호안에는 생성될 오브젝트와 경로 + 파일명을 넣음 ex) "Assets/Resources/SpriteListSO.asset"
         }
 
-        SpriteListSO so = ScriptableObject.CreateInstance<SpriteListSO>();
-        so.sprites = new System.Collections.Generic.List<Sprite>(sprites);
+        so.sprites = new List<Sprite>(sprites);
 
-        // SO 저장 경로
-        string assetPath = "Assets/Scripts/2.Test1/SpriteListSO.asset";
-        AssetDatabase.CreateAsset(so, assetPath);
-        AssetDatabase.SaveAssets();
+        EditorUtility.SetDirty(so); //유니티에게 이 오브젝트가 변경되었다는 것을 알려줌
+        AssetDatabase.SaveAssets(); //에셋을 저장함
 
-        Debug.Log($"SpriteListSO 생성 완료! ({sprites.Length}개 Sprite 포함)");
-        Selection.activeObject = so;
+        Debug.Log("스프라이트 " + sprites.Length + " 개 등록완료");
+        Selection.activeObject = so; //Project 창에서 생성된 SO를 선택
     }
 }

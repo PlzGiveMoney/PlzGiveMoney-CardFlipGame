@@ -631,6 +631,8 @@ MonoBehaviour:
   secondCard: {fileID: 0}
   cardCount: 0
   endTxt: {fileID: 543863705}
+  board: {fileID: 1955295519}
+  test1_Board: {fileID: 0}
   limitTime: 0
 --- !u!1 &1033225766
 GameObject:
@@ -990,6 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 814891983116212381, guid: cb2812b426c20414e843b787caa166fa, type: 3}
   spriteListSO: {fileID: 11400000, guid: 93e88ac29ebd5274fb8235863ed62211, type: 2}
+  stageInCard: 16
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

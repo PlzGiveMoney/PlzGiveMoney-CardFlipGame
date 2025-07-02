@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Ãß°¡
+using DG.Tweening;
 
 public class Test1_Card : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class Test1_Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        if(Test1_GameManager.Instance.firstCard == null)
+        if (Test1_GameManager.Instance.firstCard == null)
         {
             Test1_GameManager.Instance.firstCard = this;
         }

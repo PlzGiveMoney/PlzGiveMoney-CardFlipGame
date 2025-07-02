@@ -44,26 +44,13 @@ public class Test1_SoundControl : MonoBehaviour
     {
         audioSource.volume = 0.1f;
         sfxSource.volume = 0.7f;
-        /*옵션에 볼륨 슬라이더 추가시
-        if (volumeSlider != null)
-        {
-            volumeSlider.onValueChanged.AddListener(SetVolume);
-            if (gameData != null)
-                volumeSlider.value = gameData.bgmVolume;
-            else
-            {
-                volumeSlider.onValueChanged.AddListener(SetVolume);
-                volumeSlider.value = 0.5f;
-            }
-        }
+        /*옵션에 볼륨 슬라이더 추가하면 사용
 
-        if (sfxvolumeSlider != null)
-        {
-            sfxvolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-            sfxvolumeSlider.value = 0.5f;
-        }
-        if (sfxSource != null)
-            sfxSource.volume = 0.5f;
+        volumeSlider.onValueChanged.AddListener(SetVolume);
+        volumeSlider.value = 0.5f;
+
+        sfxvolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+        sfxvolumeSlider.value = 0.5f;
         */
     }
 
