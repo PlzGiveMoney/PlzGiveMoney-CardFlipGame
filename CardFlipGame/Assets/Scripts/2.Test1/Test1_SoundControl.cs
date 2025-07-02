@@ -23,11 +23,12 @@ public class Test1_SoundControl : MonoBehaviour
 
     private void Awake()
     {
-        Init();
         if (Instance == null)
         {
             Instance = this;
         }
+        Init();
+
     }
     // Start is called before the first frame update
     void Start()

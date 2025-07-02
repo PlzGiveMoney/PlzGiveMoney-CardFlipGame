@@ -26,6 +26,7 @@ public class Test1_GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
     void Start()
     {
         SetComponent();
@@ -40,8 +41,8 @@ public class Test1_GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
         isTimeCheck();
     }
-    public void SetComponent() // 나중에 필요하면 추가하기
-    {
+    public void SetComponent()
+    { 
         test1_Board = board.GetComponent<Test1_Board>();
     }
 
