@@ -1,7 +1,7 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Ãß°¡
+using UnityEngine.UI; // ì¶”ê°€
 
 public class Test1_GameManager : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class Test1_GameManager : MonoBehaviour
         Playing, Option,
         End
     }
-
+    //dd
     public GameState gameState = GameState.Start;
 
 
@@ -70,7 +70,7 @@ public class Test1_GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameData()//³ªÁß¿¡ º¯¼ö°ª ÃÊ±âÈ­ ÇÒ ¶§ »ç¿ë
+    public void SetGameData()//ë‚˜ì¤‘ì— ë³€ìˆ˜ê°’ ì´ˆê¸°í™” í•  ë•Œ ì‚¬ìš©
     { 
         time = 30.00f;
         timeTxt.text = time.ToString("N2");
@@ -78,8 +78,8 @@ public class Test1_GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
         endTxt.SetActive(false);
-        limitTime = 00.0f; // Á¦ÇÑ ½Ã°£ ÃÊ±âÈ­
-        Test1_SoundControl.Instance.audioSource.pitch = 1f; // À½¾Ç ¼Óµµ ÃÊ±âÈ­
+        limitTime = 00.0f; // ì œí•œ ì‹œê°„ ì´ˆê¸°í™”
+        Test1_SoundControl.Instance.audioSource.pitch = 1f; // ìŒì•… ì†ë„ ì´ˆê¸°í™”
     }
     public void StartGame()
     {
@@ -105,7 +105,7 @@ public class Test1_GameManager : MonoBehaviour
             {
                 Test1_SoundControl.Instance.stageClearSFXPlay();
                 endTxt.SetActive(true);
-                StartCoroutine(OpenPicture());//°ÔÀÓ ³¡³ª´Â Å¸ÀÌ¹Ö
+                StartCoroutine(OpenPicture());//ê²Œì„ ëë‚˜ëŠ” íƒ€ì´ë°
             }
         }
         else
@@ -124,7 +124,7 @@ public class Test1_GameManager : MonoBehaviour
         {
             Test1_SoundControl.Instance.audioSource.pitch = 2f;
         }
-        //¿©·¯¹ø ½ÇÇàµÈ ÈÄ¿¡ Á¤ÁöÇØ¼­ °°¾ÒÀ» ¶§ Á¶°ÇÀ» »©°í 0À¸·Î ¸ÂÃßµµ·Ï ¼öÁ¤
+        //ì—¬ëŸ¬ë²ˆ ì‹¤í–‰ëœ í›„ì— ì •ì§€í•´ì„œ ê°™ì•˜ì„ ë•Œ ì¡°ê±´ì„ ë¹¼ê³  0ìœ¼ë¡œ ë§ì¶”ë„ë¡ ìˆ˜ì •
         if (time < limitTime)
         {
             Test1_SoundControl.Instance.stageFailSFXPlay();
@@ -142,8 +142,8 @@ public class Test1_GameManager : MonoBehaviour
         for (int i = 0; i< backSpriteSO.sprites.Count; i++)
         {
             backSprite.sprite = backSpriteSO.sprites[i];
-            Debug.Log("¹è°æ ½ºÇÁ¶óÀÌÆ® º¯°æ: " + backSprite.sprite.name);
-            yield return new WaitForSeconds(0.1f); // Ä«µå »ı¼º °£°İ
+            Debug.Log("ë°°ê²½ ìŠ¤í”„ë¼ì´íŠ¸ ë³€ê²½: " + backSprite.sprite.name);
+            yield return new WaitForSeconds(0.1f); // ì¹´ë“œ ìƒì„± ê°„ê²©
         }
         Time.timeScale = 0.0f;
     }
