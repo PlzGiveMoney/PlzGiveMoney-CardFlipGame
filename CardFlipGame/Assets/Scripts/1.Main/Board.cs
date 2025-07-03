@@ -15,44 +15,48 @@ public class Board : MonoBehaviour
 
     public IEnumerator CreateCard(int Stage)
     {
-        int pairCount; // 쌍 개수
+        int pairCount;
 
-        //스테이지에 맞는 카드 갯수 설정
-        switch(Stage)
+        // 스테이지에 맞는 카드 갯수 설정
+        switch (Stage)
         {
-            case 1:
-                pairCount = Convert.ToInt32(LevelEnum.Level1);
-                break;
-            case 2:
-                pairCount = Convert.ToInt32(LevelEnum.Level2);
-                break;
-            case 3:
-                pairCount = Convert.ToInt32(LevelEnum.Level3);
-                break;
-            case 4:
-                pairCount = Convert.ToInt32(LevelEnum.Level4);
-                break;
-            case 5:
-                pairCount = Convert.ToInt32(LevelEnum.Level5);
-                break;
-            default:
-                pairCount = -1; // 잘못된 스테이지 번호 처리
-                break;
+            case 1: pairCount = Convert.ToInt32(LevelEnum.Level1); break;
+            case 2: pairCount = Convert.ToInt32(LevelEnum.Level2); break;
+            case 3: pairCount = Convert.ToInt32(LevelEnum.Level3); break;
+            case 4: pairCount = Convert.ToInt32(LevelEnum.Level4); break;
+            case 5: pairCount = Convert.ToInt32(LevelEnum.Level5); break;
+            default: pairCount = -1; break;
         }
 
         CurrentCardCount = pairCount;
 
         // 랜덤 카드 배열 생성
         int[] arr = ChooseCard(pairCount);
+        int cardCount = arr.Length;
 
-        int stageinCard = arr.Length; // 생성할 카드 갯수
+        // 행, 열 계산 (정사각형에 가깝게)
+        int columns = Mathf.CeilToInt(Mathf.Sqrt(cardCount));
+        int rows = Mathf.CeilToInt((float)cardCount / columns);
+
+        float cardSpacing = 1.2f; // 카드 간격
+
+        // 전체 폭/높이 계산
+        float totalWidth = (columns - 1) * cardSpacing;
+        float totalHeight = (rows - 1) * cardSpacing;
+
+        // 중앙 정렬 오프셋
+        Vector2 startPos = new Vector2(-totalWidth / 2f, totalHeight / 2f);
+
         arr = arr.OrderBy(x => Random.Range(0f, 1f)).ToArray();
 
-        for (int i = 0; i < stageinCard; i++)
+        for (int i = 0; i < cardCount; i++)
         {
+            int row = i / columns;
+            int col = i % columns;
+
             // 카드 생성
             GameObject go = Instantiate(Singleton.Instance.cardPrefab);
-            go.transform.position = new Vector2(0, -5f);
+            go.transform.SetParent(this.transform);
 
             // 카드 생성 사운드 재생
             Singleton.Instance.soundManager.creadtCardSFXPlay();
@@ -60,18 +64,20 @@ public class Board : MonoBehaviour
             // 카드 스프라이트 입력
             Transform front = go.transform.Find("Front");
             SpriteRenderer sr = front.GetComponent<SpriteRenderer>();
-            sr.sprite = SpriteListSO.sprites[arr[i]];
+            sr.sprite = Singleton.Instance.spriteListSO.sprites[arr[i]];
 
-            // 카드 위치 설정 후 이동
-            float x = (i % 4) * 1.4f - 2.1f;
-            float y = (i / 4) * 1.4f - 3.0f;
+            // 카드 위치 계산 (중앙 정렬)
+            float x = startPos.x + col * cardSpacing;
+            float y = startPos.y - row * cardSpacing;
             Vector2 targetPos = new Vector2(x, y);
+
+            go.transform.position = new Vector2(0, -5f); // 시작 위치
             go.transform.DOMove(targetPos, 0.3f).SetEase(Ease.OutQuad);
 
             var cardComp = go.GetComponent<Card>();
             cardComp.index = arr[i];
 
-            yield return new WaitForSeconds(0.1f); // 카드 생성 시간 간격
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

@@ -11,6 +11,7 @@ public enum LevelEnum
 public enum GameState
 {
     Start,
-    Playing, Option,
+    Playing, 
+	Option,
     End
 }

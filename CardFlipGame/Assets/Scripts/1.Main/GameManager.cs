@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI; // 추가
 
@@ -8,9 +9,12 @@ public class GameManager : MonoBehaviour
 {
     public GameState gameState = GameState.Start;
 
-    void Start()
+    public void setGame()
     {
-        Singleton.Instance.InitGame();
+        gameState = GameState.Playing;
+
+        Singleton.Instance.Stage += 1; // 스테이지 증가
+        StartCoroutine(Singleton.Instance.boardScript.CreateCard(Singleton.Instance.Stage));
     }
 
     //public IEnumerator OpenPicture()

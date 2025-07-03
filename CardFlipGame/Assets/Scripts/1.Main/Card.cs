@@ -25,7 +25,15 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-
+        if (Singleton.Instance.boardScript.firstCard == null)
+        {
+            Singleton.Instance.boardScript.firstCard = this;
+        }
+        else
+        {
+            Singleton.Instance.boardScript.secondCard = this;
+            Singleton.Instance.boardScript.MatchCard();
+        }
     }
 
     public void DestroyCard()
@@ -49,5 +57,4 @@ public class Card : MonoBehaviour
         front.SetActive(false);
         back.SetActive(true);
     }
-
 }

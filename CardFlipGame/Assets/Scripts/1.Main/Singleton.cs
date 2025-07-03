@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
+    public SpriteListSO spriteListSO;
+
+    public GameObject cardPrefab;
+
     public GameObject board;
     public Board boardScript;
-    public GameObject cardPrefab;
 
     public float limitTime = 00.0f;
     public float curruntTime = 30.00f;
 
     public SoundManager soundManager;
     public UIManager uIManagerManager;
+    public GameManager gameManager;
 
     public int CardTypeCount;
 
+    public int Stage;
     private static Singleton _instance;
     private static bool _applicationIsQuitting = false;
-
 
     public static Singleton Instance
     {
@@ -42,12 +46,25 @@ public class Singleton : MonoBehaviour
         }
     }
 
+    protected virtual void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     protected virtual void OnDestroy()
     {
         _applicationIsQuitting = true;
     }
 
-    public void InitGame()
+    public void InitGameDatas()
     {
         //보드 초기화
         boardScript.firstCard = null;

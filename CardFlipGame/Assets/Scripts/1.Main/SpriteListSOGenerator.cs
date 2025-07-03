@@ -8,7 +8,7 @@ public class SpriteListSOGenerator
     [MenuItem("CardFlipGame/Generate SpriteListSO from Images_1")] //상단 메뉴에 추가
     public static void GenerateSO()
     {
-        string assetPath = "Assets/Scripts/2.Test1/SpriteListSO.asset";
+        string assetPath = "Assets/Scripts/1.Main/SpriteListSO.asset";
         SpriteListSO so = AssetDatabase.LoadAssetAtPath<SpriteListSO>(assetPath);
 
         // Resources 경로 기준
@@ -21,7 +21,7 @@ public class SpriteListSOGenerator
             AssetDatabase.CreateAsset(so, assetPath);//괄호안에는 생성될 오브젝트와 경로 + 파일명을 넣음 ex) "Assets/Resources/SpriteListSO.asset"
         }
 
-        SpriteListSO.sprites = new List<Sprite>(sprites);
+        so.sprites = new List<Sprite>(sprites);
 
         EditorUtility.SetDirty(so); //유니티에게 이 오브젝트가 변경되었다는 것을 알려줌
         AssetDatabase.SaveAssets(); //에셋을 저장함
