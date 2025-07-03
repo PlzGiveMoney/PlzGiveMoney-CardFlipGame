@@ -134,7 +134,7 @@ public class Test1_GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator OpenPicture()
+    public IEnumerator OpenPicture() 
     {
         gameState = GameState.End;
         backGround.SetActive(true);

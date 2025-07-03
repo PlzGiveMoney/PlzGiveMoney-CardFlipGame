@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Ãß°¡
+using UnityEngine.UI; // ï¿½ß°ï¿½
 using DG.Tweening;
 
 public class Test1_Card : MonoBehaviour
