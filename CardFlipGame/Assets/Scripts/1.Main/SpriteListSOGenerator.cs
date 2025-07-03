@@ -21,7 +21,7 @@ public class SpriteListSOGenerator
             AssetDatabase.CreateAsset(so, assetPath);//괄호안에는 생성될 오브젝트와 경로 + 파일명을 넣음 ex) "Assets/Resources/SpriteListSO.asset"
         }
 
-        so.sprites = new List<Sprite>(sprites);
+        SpriteListSO.sprites = new List<Sprite>(sprites);
 
         EditorUtility.SetDirty(so); //유니티에게 이 오브젝트가 변경되었다는 것을 알려줌
         AssetDatabase.SaveAssets(); //에셋을 저장함

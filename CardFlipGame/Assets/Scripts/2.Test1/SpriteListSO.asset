@@ -12,28 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c20c118fd0187b4399db428ab51b8b0, type: 3}
   m_Name: SpriteListSO
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 038774f3f5f7cdc4eb85d949fc9158b5, type: 3}
-  - {fileID: 21300000, guid: 78da10cf81771be4f9f82d1a1eeb1ea9, type: 3}
-  - {fileID: 21300000, guid: 9c919b675f714c94297fd4eacdd407f4, type: 3}
-  - {fileID: 21300000, guid: 7ab29ef010a5a9c4fb234944dd66a7b7, type: 3}
-  - {fileID: 21300000, guid: 53d3cc3ef7ba97a4a970425149c152e6, type: 3}
-  - {fileID: 21300000, guid: 8af9e37c013d2584a8ec8119de0465a1, type: 3}
-  - {fileID: 21300000, guid: 0df349c9dc48c8747b872ba3b6db2a4d, type: 3}
-  - {fileID: 21300000, guid: a47d7387cdc4d0a4fa6794fb9c296abb, type: 3}
-  - {fileID: 21300000, guid: 07064b6fc8031d340be48d412b5b8534, type: 3}
-  - {fileID: 21300000, guid: a7e448f10a23d3f4aa8f76976fe63f2f, type: 3}
-  - {fileID: 21300000, guid: 9421701b06781f94d8806be11912017b, type: 3}
-  - {fileID: 21300000, guid: 777c336134786a24b9889b01f28386e3, type: 3}
-  - {fileID: 21300000, guid: bacb76cd7485960498638fe2e52fe4b5, type: 3}
-  - {fileID: 21300000, guid: 08026d51beee9934d9380f445494ddb6, type: 3}
-  - {fileID: 21300000, guid: f0f20d38fd2ae644a87be70e58ff0014, type: 3}
-  - {fileID: 21300000, guid: fd9f950564fce6f4791ea85821159d2d, type: 3}
-  - {fileID: 21300000, guid: 683ec16e6e171984db824fccd1a8974d, type: 3}
-  - {fileID: 21300000, guid: 5d6b1ebd9924a774ea3207e221e5b014, type: 3}
-  - {fileID: 21300000, guid: e5f7c6fdfc6c9be4eafaea51a17524c4, type: 3}
-  - {fileID: 21300000, guid: af184a73f3fc2874fb5341973c05e8e4, type: 3}
-  - {fileID: 21300000, guid: e3a93fac9882dca4f8eb7eea19e193d1, type: 3}
-  - {fileID: 21300000, guid: 8dfc94119eaa19c48b58622ee67c9ec0, type: 3}
-  - {fileID: 21300000, guid: 00136281f422d9a4192eb254c8e849d9, type: 3}
-  - {fileID: 21300000, guid: 67dc984f4a40bb0409583363c9054373, type: 3}
