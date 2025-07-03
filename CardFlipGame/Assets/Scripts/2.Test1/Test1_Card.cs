@@ -18,6 +18,7 @@ public class Test1_Card : MonoBehaviour
     }
     public void OpenCard()
     {
+        if(Test1_GameManager.Instance.gameState != Test1_GameManager.GameState.Playing) return;
         Test1_SoundControl.Instance.cardFlipSFXPlay();
 
         anim.SetBool("isOpen", true);

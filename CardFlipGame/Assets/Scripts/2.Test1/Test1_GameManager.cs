@@ -8,6 +8,18 @@ public class Test1_GameManager : MonoBehaviour
     public Text timeTxt;
     float time = 30.00f;
     public static Test1_GameManager Instance;
+    public SpriteRenderer backSprite;
+    public SpriteListSO backSpriteSO;
+    public GameObject backGround;
+    public enum GameState
+    {
+        Start,
+        Playing, Option,
+        End
+    }
+
+    public GameState gameState = GameState.Start;
+
 
     public Test1_Card firstCard;
     public Test1_Card secondCard;
@@ -37,13 +49,25 @@ public class Test1_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        TimeStream();
         timeTxt.text = time.ToString("N2");
         isTimeCheck();
     }
     public void SetComponent()
     { 
         test1_Board = board.GetComponent<Test1_Board>();
+    }
+
+    public void TimeStream()
+    {
+        if (gameState == GameState.Playing)
+        {
+            time -= Time.deltaTime;
+        }
+        else if (gameState == GameState.Option)
+        {
+            //
+        }
     }
 
     public void SetGameData()//나중에 변수값 초기화 할 때 사용
@@ -81,7 +105,7 @@ public class Test1_GameManager : MonoBehaviour
             {
                 Test1_SoundControl.Instance.stageClearSFXPlay();
                 endTxt.SetActive(true);
-                Time.timeScale = 0.0f;
+                StartCoroutine(OpenPicture());//게임 끝나는 타이밍
             }
         }
         else
@@ -108,6 +132,20 @@ public class Test1_GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             time = 0;
         }
+    }
+
+    public IEnumerator OpenPicture()
+    {
+        gameState = GameState.End;
+        backGround.SetActive(true);
+        backSprite = backGround.GetComponent<SpriteRenderer>();
+        for (int i = 0; i< backSpriteSO.sprites.Count; i++)
+        {
+            backSprite.sprite = backSpriteSO.sprites[i];
+            Debug.Log("배경 스프라이트 변경: " + backSprite.sprite.name);
+            yield return new WaitForSeconds(0.1f); // 카드 생성 간격
+        }
+        Time.timeScale = 0.0f;
     }
 
 }

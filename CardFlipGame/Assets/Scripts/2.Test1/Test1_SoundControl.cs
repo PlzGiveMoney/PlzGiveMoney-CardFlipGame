@@ -45,14 +45,13 @@ public class Test1_SoundControl : MonoBehaviour
     {
         audioSource.volume = 0.1f;
         sfxSource.volume = 0.7f;
-        /*옵션에 볼륨 슬라이더 추가하면 사용
+
+        volumeSlider.value = audioSource.volume;
+        sfxvolumeSlider.value = sfxSource.volume;
 
         volumeSlider.onValueChanged.AddListener(SetVolume);
-        volumeSlider.value = 0.5f;
-
         sfxvolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        sfxvolumeSlider.value = 0.5f;
-        */
+       
     }
 
     public void PlayStageMusic()

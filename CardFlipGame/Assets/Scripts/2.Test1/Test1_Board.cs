@@ -82,6 +82,8 @@ public class Test1_Board : MonoBehaviour
             cardComp.index = arr[i];
             yield return new WaitForSeconds(0.1f); // 카드 생성 간격
         }
+        Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Playing;
+
     }
 
 }
