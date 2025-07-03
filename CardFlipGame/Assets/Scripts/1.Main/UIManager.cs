@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -31,5 +32,30 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0.0f;
             Singleton.Instance.curruntTime = 0;
         }
+    }
+    public GameObject OptionUI;
+
+    
+    public void OnOptionButton()
+    {
+        //Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Option;
+        OptionUI.SetActive(true);
+    }
+
+    public void OnOptionCloseButton()
+    {
+        //Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Playing;
+        OptionUI.SetActive(false);
+    }
+
+    public void OnMainButton()
+    {
+        //SceneManager.LoadScene("MainScean");
+        Debug.Log("Main Button Clicked");
+    }
+
+    public void OnRestartButton()
+    {
+        SceneManager.LoadScene("TestScene1");
     }
 }

@@ -4,14 +4,14 @@
 //using System.Linq;
 //using DG.Tweening;
 
-//public class Test1_Board : MonoBehaviour
-//{
-//    public GameObject card;
-//    public SpriteListSO spriteListSO;
-//    public int stageInCard = 16;//ÀÓ½ÃÁöÁ¤ÇÑ º¯¼ö ³­ÀÌµµ »ó½Â½Ã Á¶ÀýÇÏ±â
-//    int pairCount;
-//    public int cardCount;//»çÁø °³¼ö
-//    //public static Text1_Board Instance; º¸µå´Â ½Ì±ÛÅæÀ¸·Î ¾ÈÇÏ´Â°Ô ÁÁÀ»µí
+public class Test1_Board : MonoBehaviour
+{
+    public GameObject card;
+    public SpriteListSO spriteListSO;
+    public int stageInCard = 16;//ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Â½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+    int pairCount;
+    public int cardCount;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //public static Text1_Board Instance; ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 //    private void Awake()
 //    {/*
@@ -27,28 +27,28 @@
 
 //    }
 
-//    public IEnumerator CreateCard()
-//    {
-//        //spriteÀÇ °³¼ö¸¦ º¯¼ö·Î ±× ¾ÈÀÇ ¼ýÀÚ¸¦ ·£´ýÇÏ°Ô Ä«µåÀÇ °³¼ö¸¸Å­ »Ì¾Æ¼­ index¸¦ ÂüÁ¶ÇÒ ¹è¿­¿¡ ³Ö´Â´Ù.ÀÎµ¥ °£´ÜÇÏ°Ô ÇÒ ¹æ¹ýÀÌ ¾øÀ»±î?
-//        //cardCount = spriteListSO.sprites.Count; 
-//        pairCount = stageInCard/2;// ½Ö °³¼ö
+    public IEnumerator CreateCard()
+    {
+        //spriteï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½Ì¾Æ¼ï¿½ indexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Ö´Â´ï¿½.ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+        cardCount = spriteListSO.sprites.Count; 
+        pairCount = stageInCard/2;// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-//        //sprite ÀÎµ¦½º·Î »ç¿ë°¡´ÉÇÑ ¼ýÀÚ ¸®½ºÆ® »ý¼º
-//        List<int> availableNumbers = new List<int>();
-//        for (int i = 0; i < cardCount; i++)
-//        {
-//            availableNumbers.Add(i);
-//        }
+        //sprite ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+        List<int> availableNumbers = new List<int>();
+        for (int i = 0; i < cardCount; i++)
+        {
+            availableNumbers.Add(i);
+        }
 
-//        //pairCount¸¸Å­ ·£´ýÇÏ°Ô »Ì±â (Áßº¹ X)
-//        List<int> selectedNumbers = new List<int>();
-//        while (selectedNumbers.Count < pairCount)
-//        {
-//            //availableNumbers¿¡¼­ ¼±ÅÃµÈ ¹øÈ£¸¦ Á¦°ÅÇØ¼­ Áßº¹À» ¹æÁöÇÑ´Ù.
-//            int randIndex = Random.Range(0, availableNumbers.Count);
-//            selectedNumbers.Add(availableNumbers[randIndex]);
-//            availableNumbers.RemoveAt(randIndex);
-//        }
+        //pairCountï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ì±ï¿½ (ï¿½ßºï¿½ X)
+        List<int> selectedNumbers = new List<int>();
+        while (selectedNumbers.Count < pairCount)
+        {
+            //availableNumbersï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+            int randIndex = Random.Range(0, availableNumbers.Count);
+            selectedNumbers.Add(availableNumbers[randIndex]);
+            availableNumbers.RemoveAt(randIndex);
+        }
 
 //        int[] arr = new int[pairCount * 2];
 //        for (int i = 0; i < pairCount; i++)
@@ -58,31 +58,31 @@
 //        }
 //        arr = arr.OrderBy(x => Random.Range(0f, 1f)).ToArray();
 
-//        //Debug.Log("¹è¿­ È®ÀÎ¿ë" + string.Join(", ", arr));
+        //Debug.Log("ï¿½è¿­ È®ï¿½Î¿ï¿½" + string.Join(", ", arr));
 
-//        for (int i = 0; i < stageInCard; i++)
-//        {
-//            // Ä«µå »ý¼º
-//            GameObject go = Instantiate(card);
-//            go.transform.position = new Vector2(0, -5f);
-//            // Ä«µå »ý¼º »ç¿îµå Àç»ý
-//            Test1_SoundControl.Instance.creadtCardSFXPlay(); // Ä«µå »ý¼º »ç¿îµå Àç»ý
-//            // Ä«µå ½ºÇÁ¶óÀÌÆ® ÀÔ·Â
-//            Transform front = go.transform.Find("Front");
-//            SpriteRenderer sr = front.GetComponent<SpriteRenderer>();
-//            //sr.sprite = spriteListSO.sprites[arr[i]];
-//            // Ä«µå À§Ä¡ ¼³Á¤ ÈÄ ÀÌµ¿
-//            float x = (i % 4) * 1.4f - 2.1f;
-//            float y = (i / 4) * 1.4f - 3.0f;
-//            Vector2 targetPos = new Vector2(x, y);
-//            go.transform.DOMove(targetPos, 0.3f).SetEase(Ease.OutQuad);
-//            //index°ª, ÄÄÆ÷³ÍÆ® ÀÔ·Â
-//            Test1_GameManager.Instance.cardCount = arr.Length;
-//            var cardComp = go.GetComponent<Test1_Card>();
-//            cardComp.index = arr[i];
-//            yield return new WaitForSeconds(0.1f); // Ä«µå »ý¼º °£°Ý
-//        }
-//        Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Playing;
+        for (int i = 0; i < stageInCard; i++)
+        {
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            GameObject go = Instantiate(card);
+            go.transform.position = new Vector2(0, -5f);
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            Test1_SoundControl.Instance.creadtCardSFXPlay(); // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ô·ï¿½
+            Transform front = go.transform.Find("Front");
+            SpriteRenderer sr = front.GetComponent<SpriteRenderer>();
+            sr.sprite = spriteListSO.sprites[arr[i]];
+            // Ä«ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
+            float x = (i % 4) * 1.4f - 2.1f;
+            float y = (i / 4) * 1.4f - 3.0f;
+            Vector2 targetPos = new Vector2(x, y);
+            go.transform.DOMove(targetPos, 0.3f).SetEase(Ease.OutQuad);
+            //indexï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ô·ï¿½
+            Test1_GameManager.Instance.cardCount = arr.Length;
+            var cardComp = go.GetComponent<Test1_Card>();
+            cardComp.index = arr[i];
+            yield return new WaitForSeconds(0.1f); // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        }
+        Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Playing;
 
 //    }
 
