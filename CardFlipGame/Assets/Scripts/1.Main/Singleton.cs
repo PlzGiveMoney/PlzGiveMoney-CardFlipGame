@@ -70,6 +70,10 @@ public class Singleton : MonoBehaviour
         boardScript.firstCard = null;
         boardScript.secondCard = null;
         boardScript.CurrentCardCount = 0;
+        foreach (Transform child in board.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         //�ð� �ʱ�ȭ
         curruntTime = 30.00f;

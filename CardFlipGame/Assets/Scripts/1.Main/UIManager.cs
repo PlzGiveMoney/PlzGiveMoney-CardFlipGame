@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject MainBackGround;
 
+    public GameObject StagePanel;
+
+    public GameObject OptionMainBtn;
+
     public Vector3 Origin;
     private void Start()
     {
@@ -37,19 +41,24 @@ public class UIManager : MonoBehaviour
                 GameUI.SetActive(false);
                 MainBackGround.SetActive(true);
                 failPanel.SetActive(false);
+                OptionMainBtn.SetActive(false);
                 coroutine = StartCoroutine(BackGroundMove());
                 break;
+
             case GameState.Playing:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
                 MainBackGround.SetActive(false);
                 clearPanle.SetActive(false);
+                StagePanel.SetActive(false);
+                OptionMainBtn.SetActive(true);
                 StopCoroutine(coroutine);
                 MainBackGround.transform.localPosition = Origin; // ��� ��ġ �ʱ�ȭ
                 Singleton.Instance.curruntTime -= Time.deltaTime;
                 timeTxt.text = Singleton.Instance.curruntTime.ToString("N2");
                 IsTimeOver();
                 break;
+
             case GameState.End:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
@@ -107,7 +116,13 @@ public class UIManager : MonoBehaviour
     }
     public void OnStageButton()
     {
-        //�������� ���� UI ����
+        StagePanel.SetActive(true);
+    }
+
+    public void StageSettingButton(int num)
+    {
+        Singleton.Instance.Stage = num-1; // 스테이지 초기화
+        Singleton.Instance.gameManager.setGame();
     }
 
     public void OnStartButton()
