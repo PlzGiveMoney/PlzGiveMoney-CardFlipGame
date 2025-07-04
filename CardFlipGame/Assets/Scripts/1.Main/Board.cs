@@ -25,6 +25,8 @@ public class Board : MonoBehaviour
             case 3: pairCount = Convert.ToInt32(LevelEnum.Level3); break;
             case 4: pairCount = Convert.ToInt32(LevelEnum.Level4); break;
             case 5: pairCount = Convert.ToInt32(LevelEnum.Level5); break;
+            case 6: pairCount = Convert.ToInt32(LevelEnum.Level6); break;
+            case 7: pairCount = Convert.ToInt32(LevelEnum.Level7); break;
             default: pairCount = -1; break;
         }
 
