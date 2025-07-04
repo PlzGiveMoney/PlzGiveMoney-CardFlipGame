@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
-    public int CurrentCardCount; //³²Àº ½Ö °¹¼ö
+    public int CurrentCardCount; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public Card firstCard;
     public Card secondCard;
@@ -17,7 +17,7 @@ public class Board : MonoBehaviour
     {
         int pairCount;
 
-        // ½ºÅ×ÀÌÁö¿¡ ¸Â´Â Ä«µå °¹¼ö ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         switch (Stage)
         {
             case 1: pairCount = Convert.ToInt32(LevelEnum.Level1); break;
@@ -30,21 +30,21 @@ public class Board : MonoBehaviour
 
         CurrentCardCount = pairCount;
 
-        // ·£´ý Ä«µå ¹è¿­ »ý¼º
+        // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½
         int[] arr = ChooseCard(pairCount);
         int cardCount = arr.Length;
 
-        // Çà, ¿­ °è»ê (Á¤»ç°¢Çü¿¡ °¡±õ°Ô)
+        // ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ç°¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         int columns = Mathf.CeilToInt(Mathf.Sqrt(cardCount));
         int rows = Mathf.CeilToInt((float)cardCount / columns);
 
-        float cardSpacing = 1.2f; // Ä«µå °£°Ý
+        float cardSpacing = 1.2f; // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        // ÀüÃ¼ Æø/³ôÀÌ °è»ê
+        // ï¿½ï¿½Ã¼ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         float totalWidth = (columns - 1) * cardSpacing;
         float totalHeight = (rows - 1) * cardSpacing;
 
-        // Áß¾Ó Á¤·Ä ¿ÀÇÁ¼Â
+        // ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Vector2 startPos = new Vector2(-totalWidth / 2f, totalHeight / 2f);
 
         arr = arr.OrderBy(x => Random.Range(0f, 1f)).ToArray();
@@ -54,24 +54,24 @@ public class Board : MonoBehaviour
             int row = i / columns;
             int col = i % columns;
 
-            // Ä«µå »ý¼º
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             GameObject go = Instantiate(Singleton.Instance.cardPrefab);
             go.transform.SetParent(this.transform);
 
-            // Ä«µå »ý¼º »ç¿îµå Àç»ý
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Singleton.Instance.soundManager.creadtCardSFXPlay();
 
-            // Ä«µå ½ºÇÁ¶óÀÌÆ® ÀÔ·Â
+            // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ô·ï¿½
             Transform front = go.transform.Find("Front");
             SpriteRenderer sr = front.GetComponent<SpriteRenderer>();
             sr.sprite = Singleton.Instance.spriteListSO.sprites[arr[i]];
 
-            // Ä«µå À§Ä¡ °è»ê (Áß¾Ó Á¤·Ä)
+            // Ä«ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ (ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½)
             float x = startPos.x + col * cardSpacing;
             float y = startPos.y - row * cardSpacing;
             Vector2 targetPos = new Vector2(x, y);
 
-            go.transform.position = new Vector2(0, -5f); // ½ÃÀÛ À§Ä¡
+            go.transform.position = new Vector2(0, -5f); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
             go.transform.DOMove(targetPos, 0.3f).SetEase(Ease.OutQuad);
 
             var cardComp = go.GetComponent<Card>();
@@ -83,7 +83,7 @@ public class Board : MonoBehaviour
 
     public int[] ChooseCard(int pairCount)
     {
-        //sprite ÀÎµ¦½º·Î »ç¿ë°¡´ÉÇÑ ¼ýÀÚ ¸®½ºÆ® »ý¼º
+        //sprite ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         List<int> availableNumbers = new List<int>();
 
         for (int i = 0; i < CurrentCardCount; i++)
@@ -91,12 +91,12 @@ public class Board : MonoBehaviour
             availableNumbers.Add(i);
         }
 
-        //pairCount¸¸Å­ ·£´ýÇÏ°Ô »Ì±â (Áßº¹ X)
+        //pairCountï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ì±ï¿½ (ï¿½ßºï¿½ X)
         List<int> selectedNumbers = new List<int>();
 
         while (selectedNumbers.Count < pairCount)
         {
-            //availableNumbers¿¡¼­ ¼±ÅÃµÈ ¹øÈ£¸¦ Á¦°ÅÇØ¼­ Áßº¹À» ¹æÁöÇÑ´Ù.
+            //availableNumbersï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
             int randIndex = Random.Range(0, availableNumbers.Count);
             selectedNumbers.Add(availableNumbers[randIndex]);
             availableNumbers.RemoveAt(randIndex);

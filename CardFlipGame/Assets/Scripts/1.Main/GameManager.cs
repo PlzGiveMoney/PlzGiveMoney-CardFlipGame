@@ -6,11 +6,9 @@ public class GameManager : MonoBehaviour
 
     public void setGame()
     {
-        Singleton.Instance.InitGameDatas(); // °ÔÀÓ µ¥ÀÌÅÍ ÃÊ±âÈ­
-
         gameState = GameState.Playing;
 
-        Singleton.Instance.Stage += 1; // ½ºÅ×ÀÌÁö Áõ°¡
+        Singleton.Instance.Stage += 1; // ìŠ¤í…Œì´ì§€ ì¦ê°€
 
         Debug.Log(Singleton.Instance.Stage);
         StartCoroutine(Singleton.Instance.boardScript.CreateCard(Singleton.Instance.Stage));

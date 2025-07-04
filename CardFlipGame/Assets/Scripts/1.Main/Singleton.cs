@@ -28,7 +28,7 @@ public class Singleton : MonoBehaviour
         {
             if (_applicationIsQuitting)
             {
-                Debug.LogWarning("[Singleton] ¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀÌ Á¾·á ÁßÀÔ´Ï´Ù. ÀÎ½ºÅÏ½º¸¦ ¹ÝÈ¯ÇÏÁö ¾Ê½À´Ï´Ù.");
+                Debug.LogWarning("[Singleton] ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½. ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
                 return null;
             }
 
@@ -66,19 +66,19 @@ public class Singleton : MonoBehaviour
 
     public void InitGameDatas()
     {
-        //º¸µå ÃÊ±âÈ­
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         boardScript.firstCard = null;
         boardScript.secondCard = null;
         boardScript.CurrentCardCount = 0;
 
-        //½Ã°£ ÃÊ±âÈ­
+        //ï¿½Ã°ï¿½ ï¿½Ê±ï¿½È­
         curruntTime = 30.00f;
-        limitTime = 00.0f; // Á¦ÇÑ ½Ã°£ ÃÊ±âÈ­
+        limitTime = 00.0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½Ê±ï¿½È­
 
-        //»ç¿îµå ¸Å´ÏÀú ÃÊ±âÈ­
-        soundManager.audioSource.pitch = 1f; // À½¾Ç ¼Óµµ ÃÊ±âÈ­
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+        soundManager.audioSource.pitch = 1f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½Ê±ï¿½È­
 
-        //UI ¸Å´ÏÀú ÃÊ±âÈ­
+        //UI ë§¤ë‹ˆì € ì´ˆê¸°í™”
         uIManagerManager.clearPanle.SetActive(false);
         uIManagerManager.failPanel.SetActive(false);
         uIManagerManager.timeTxt.text = curruntTime.ToString("N2");

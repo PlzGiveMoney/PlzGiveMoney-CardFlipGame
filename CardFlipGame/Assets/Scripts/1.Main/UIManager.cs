@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    //Á¦ÇÑ ½Ã°£ÀÌ ³ª¿À´Â ÅØ½ºÆ®
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
     public Text timeTxt;
 
-    //°ÔÀÓÀÌ ³¡³µÀ» ¶§ ³ª¿À´Â ÆĞ³Î
+    //ê²Œì„ì´ ëë‚¬ì„ ë•Œ ë‚˜ì˜¤ëŠ” íŒ¨ë„
     public GameObject clearPanle;
 
     public GameObject failPanel;
@@ -21,8 +21,6 @@ public class UIManager : MonoBehaviour
     public GameObject GameUI;
 
     public GameObject MainBackGround;
-
-    public GameObject MainMenuBtn;
 
     public Vector3 Origin;
     private void Start()
@@ -38,16 +36,15 @@ public class UIManager : MonoBehaviour
                 MainUI.SetActive(true);
                 GameUI.SetActive(false);
                 MainBackGround.SetActive(true);
-                MainMenuBtn.SetActive(false);
                 coroutine = StartCoroutine(BackGroundMove());
                 break;
             case GameState.Playing:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
                 MainBackGround.SetActive(false);
-                MainMenuBtn.SetActive(true);
+                Debug.Log("Playing State");
                 StopCoroutine(coroutine);
-                MainBackGround.transform.localPosition = Origin; // ¹è°æ À§Ä¡ ÃÊ±âÈ­
+                MainBackGround.transform.localPosition = Origin; // ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ê±ï¿½È­
                 Singleton.Instance.curruntTime -= Time.deltaTime;
                 timeTxt.text = Singleton.Instance.curruntTime.ToString("N2");
                 IsTimeOver();
@@ -77,7 +74,7 @@ public class UIManager : MonoBehaviour
         {
             Singleton.Instance.soundManager.audioSource.pitch = 2f;
         }
-        //¿©·¯¹ø ½ÇÇàµÈ ÈÄ¿¡ Á¤ÁöÇØ¼­ °°¾ÒÀ» ¶§ Á¶°ÇÀ» »©°í 0À¸·Î ¸ÂÃßµµ·Ï ¼öÁ¤
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Singleton.Instance.curruntTime < Singleton.Instance.limitTime)
         {
             Singleton.Instance.soundManager.stageFailSFXPlay();
@@ -107,56 +104,61 @@ public class UIManager : MonoBehaviour
     }
     public void OnStageButton()
     {
-        //½ºÅ×ÀÌÁö ¼±ÅÃ UI ³ª¿È
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
     }
 
     public void OnStartButton()
     {
         if(Singleton.Instance.gameManager.gameState == GameState.Start)
         {
-            Singleton.Instance.Stage = 0; // ½ºÅ×ÀÌÁö ÃÊ±âÈ­
+            Singleton.Instance.Stage = 0; // ìŠ¤í…Œì´ì§€ ì´ˆê¸°í™”
         }
+        Singleton.Instance.gameManager.setGame();
+    }
+
+    public void OnRestartButton()
+    {
         Singleton.Instance.gameManager.setGame();
     }
 
     public void EnterStageHelp()
     {
-        //½ºÅ×ÀÌÁö µµ¿ò¸» UI ³ª¿È
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
         stageHelpPanel.SetActive(true);
     }
     public void ExitStageHelp()
     {
-        //½ºÅ×ÀÌÁö µµ¿ò¸» UI ²¨Áü
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
         stageHelpPanel.SetActive(false);
     }
     public void EnterChallengeHelp()
     {
-        //Ã§¸°Áö µµ¿ò¸» UI ³ª¿È
+        //Ã§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
         ChallengeHelpPanel.SetActive(true);
     }
     public void ExitChallengeHelp()
     {
-        //Ã§¸°Áö µµ¿ò¸» UI ²¨Áü
+        //Ã§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
         ChallengeHelpPanel.SetActive(false);
     }
 
     Coroutine coroutine;
     public IEnumerator BackGroundMove()
     {
-        float moveInterval = 0.5f; // ¿òÁ÷ÀÓ °£°İ(ÃÊ)
-        float moveDuration = 50f; // ÇÑ ¹ø ¿òÁ÷ÀÓ¿¡ °É¸®´Â ½Ã°£(ÃÊ)
-        float moveStrength = 2000f; // ÇÑ ¹ø¿¡ ÀÌµ¿ÇÒ ÃÖ´ë °Å¸®
+        float moveInterval = 0.5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
+        float moveDuration = 50f; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½)
+        float moveStrength = 2000f; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½
 
         Vector3 origin = MainBackGround.transform.position;
 
         while (true)
         {
-            // ¿À¸¥ÂÊ À§ ¹æÇâ (1, 1) Á¤±ÔÈ­
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (1, 1) ï¿½ï¿½ï¿½ï¿½È­
             Vector2 direction = new Vector2(1f, 1f).normalized;
             float strength = moveStrength;
             Vector3 targetPos = origin + (Vector3)(direction * strength);
 
-            // ºÎµå·´°Ô ÀÌµ¿
+            // ï¿½Îµå·´ï¿½ï¿½ ï¿½Ìµï¿½
             float t = 0f;
             Vector3 startPos = MainBackGround.transform.position;
             while (t < moveDuration)
@@ -167,7 +169,7 @@ public class UIManager : MonoBehaviour
             }
             MainBackGround.transform.position = targetPos;
 
-            // ´ÙÀ½ ¿òÁ÷ÀÓ±îÁö ´ë±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(moveInterval);
         }
     }

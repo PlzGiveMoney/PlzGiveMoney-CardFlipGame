@@ -15,22 +15,26 @@ public class SoundManager : MonoBehaviour
     public AudioClip stageClearSFX;
     public AudioClip stageFailSFX;
     public AudioClip creadtCardSFX;
+    public GameObject audioListener;
 
     public Slider volumeSlider;
     public Slider sfxvolumeSlider;
 
     private void Awake()
     {
+        AudioSource[] sources = audioListener.GetComponents<AudioSource>();
+        audioSource = sources[0];
+        sfxSource = sources[1];
+
         audioSource.volume = 0.1f;
         sfxSource.volume = 0.7f;
-        /*¿É¼Ç¿¡ º¼·ý ½½¶óÀÌ´õ Ãß°¡ÇÏ¸é »ç¿ë
-
+        volumeSlider.value = audioSource.volume;
         volumeSlider.onValueChanged.AddListener(SetVolume);
-        volumeSlider.value = 0.5f;
 
+        sfxvolumeSlider.value = sfxSource.volume;
         sfxvolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        sfxvolumeSlider.value = 0.5f;
-        */
+        PlayStageMusic();
+
     }
 
     public void PlayStageMusic()
@@ -50,7 +54,7 @@ public class SoundManager : MonoBehaviour
         audioSource.volume = value;
     }
 
-    // SFX º¼·ý Á¶Àý ¸Þ¼­µå Ãß°¡
+    // SFX ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
     public void SetSFXVolume(float value)
     {
         sfxSource.volume = value;
