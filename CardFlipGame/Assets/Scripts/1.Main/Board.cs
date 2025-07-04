@@ -123,8 +123,9 @@ public class Board : MonoBehaviour
             if (Singleton.Instance.boardScript.CurrentCardCount == 0)
             {
                 Singleton.Instance.soundManager.stageClearSFXPlay();
-                Singleton.Instance.uIManagerManager.endPanel.SetActive(true);
-                Time.timeScale = 0.0f;
+                Singleton.Instance.uIManagerManager.clearPanle.SetActive(true);
+
+                Singleton.Instance.gameManager.gameState = GameState.End;
             }
         }
         else

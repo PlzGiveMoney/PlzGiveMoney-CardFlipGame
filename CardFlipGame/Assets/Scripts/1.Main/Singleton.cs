@@ -79,7 +79,8 @@ public class Singleton : MonoBehaviour
         soundManager.audioSource.pitch = 1f; // 음악 속도 초기화
 
         //UI 매니저 초기화
-        uIManagerManager.endPanel.SetActive(false);
+        uIManagerManager.clearPanle.SetActive(false);
+        uIManagerManager.failPanel.SetActive(false);
         uIManagerManager.timeTxt.text = curruntTime.ToString("N2");
     }
 }

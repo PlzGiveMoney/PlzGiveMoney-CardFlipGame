@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour
     public Text timeTxt;
 
     //게임이 끝났을 때 나오는 패널
-    public GameObject endPanel;
+    public GameObject clearPanle;
+
+    public GameObject failPanel;
 
     public GameObject stageHelpPanel;
 
@@ -53,8 +55,18 @@ public class UIManager : MonoBehaviour
             case GameState.End:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
-                endPanel.SetActive(true);
-                Time.timeScale = 0.0f;
+
+                if(Singleton.Instance.curruntTime >= Singleton.Instance.limitTime)
+                {
+                    clearPanle.SetActive(true);
+                    failPanel.SetActive(false);
+                }
+                else
+                {
+                    clearPanle.SetActive(false);
+                    failPanel.SetActive(true);
+                }
+
                 break;
         }
     }
@@ -69,7 +81,7 @@ public class UIManager : MonoBehaviour
         if (Singleton.Instance.curruntTime < Singleton.Instance.limitTime)
         {
             Singleton.Instance.soundManager.stageFailSFXPlay();
-            endPanel.SetActive(true);
+            failPanel.SetActive(true);
             Time.timeScale = 0.0f;
             Singleton.Instance.curruntTime = 0;
         }
@@ -85,13 +97,13 @@ public class UIManager : MonoBehaviour
 
     public void OnOptionCloseButton()
     {
-        //Test1_GameManager.Instance.gameState = Test1_GameManager.GameState.Playing;
         OptionUI.SetActive(false);
     }
 
     public void OnMainButton()
     {
         Singleton.Instance.gameManager.gameState = GameState.Start;
+        OptionUI.SetActive(false);
     }
     public void OnStageButton()
     {
@@ -100,6 +112,10 @@ public class UIManager : MonoBehaviour
 
     public void OnStartButton()
     {
+        if(Singleton.Instance.gameManager.gameState == GameState.Start)
+        {
+            Singleton.Instance.Stage = 0; // 스테이지 초기화
+        }
         Singleton.Instance.gameManager.setGame();
     }
 
