@@ -101,6 +101,8 @@ public class UIManager : MonoBehaviour
     public void OnMainButton()
     {
         Singleton.Instance.gameManager.gameState = GameState.Start;
+        Singleton.Instance.soundManager.audioSource.pitch = 1f; // ���� �ӵ� �ʱ�ȭ
+
         OptionUI.SetActive(false);
     }
     public void OnStageButton()
