@@ -60,6 +60,11 @@ public class UIManager : MonoBehaviour
                 IsTimeOver();
                 break;
 
+            case GameState.PlayingPicture:
+                MainUI.SetActive(false);
+                GameUI.SetActive(false);
+                break;
+
             case GameState.End:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);

@@ -12,6 +12,6 @@ public enum GameState
 {
     Start,
     Playing, 
-	Option,
+	Option, PlayingPicture,
     End
 }

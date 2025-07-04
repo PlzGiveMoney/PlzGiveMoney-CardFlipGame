@@ -92,6 +92,7 @@ public class Singleton : MonoBehaviour
     }
       public IEnumerator OpenPicture() 
       {
+        gameManager.gameState = GameState.PlayingPicture;
         backGround.SetActive(true);
         backSprite = backGround.GetComponent<SpriteRenderer>();
         for (int i = 0; i< spriteListSO.sprites.Count; i++)
