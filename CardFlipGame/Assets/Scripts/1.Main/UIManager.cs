@@ -36,13 +36,14 @@ public class UIManager : MonoBehaviour
                 MainUI.SetActive(true);
                 GameUI.SetActive(false);
                 MainBackGround.SetActive(true);
+                failPanel.SetActive(false);
                 coroutine = StartCoroutine(BackGroundMove());
                 break;
             case GameState.Playing:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
                 MainBackGround.SetActive(false);
-                Debug.Log("Playing State");
+                clearPanle.SetActive(false);
                 StopCoroutine(coroutine);
                 MainBackGround.transform.localPosition = Origin; // ��� ��ġ �ʱ�ȭ
                 Singleton.Instance.curruntTime -= Time.deltaTime;
