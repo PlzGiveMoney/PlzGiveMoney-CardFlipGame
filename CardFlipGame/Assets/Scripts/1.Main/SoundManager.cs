@@ -28,7 +28,6 @@ public class SoundManager : MonoBehaviour
 
         audioSource.volume = 0.1f;
         sfxSource.volume = 0.7f;
-        //test
         volumeSlider.value = audioSource.volume;
         volumeSlider.onValueChanged.AddListener(SetVolume);
 
