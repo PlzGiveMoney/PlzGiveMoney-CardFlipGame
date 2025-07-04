@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
         Singleton.Instance.Stage += 1; // 스테이지 증가
 
-        Debug.Log(Singleton.Instance.Stage);
+        Singleton.Instance.InitGameDatas();
         StartCoroutine(Singleton.Instance.boardScript.CreateCard(Singleton.Instance.Stage));
     }
 }
