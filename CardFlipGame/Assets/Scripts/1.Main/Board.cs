@@ -86,7 +86,7 @@ public class Board : MonoBehaviour
         //sprite �ε����� ��밡���� ���� ����Ʈ ����
         List<int> availableNumbers = new List<int>();
 
-        for (int i = 0; i < CurrentCardCount; i++)
+        for (int i = 0; i < Singleton.Instance.spriteListSO.sprites.Count; i++)
         {
             availableNumbers.Add(i);
         }
