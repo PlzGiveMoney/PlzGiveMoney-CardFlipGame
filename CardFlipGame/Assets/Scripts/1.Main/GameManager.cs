@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.Playing;
 
-        Singleton.Instance.InitGameDatas(); // ���� ������ �ʱ�ȭ
-        Singleton.Instance.Stage += 1; // �������� ����
+        Singleton.Instance.InitGameDatas(); //주석 테스트
+        Singleton.Instance.Stage += 1; //주석 테스트
         StartCoroutine(Singleton.Instance.boardScript.CreateCard(Singleton.Instance.Stage));
     }
 }
