@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Singleton : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class Singleton : MonoBehaviour
     public SoundManager soundManager;
     public UIManager uIManagerManager;
     public GameManager gameManager;
+    public SpriteRenderer backSprite;
 
+    public GameObject backGround;
     public int CardTypeCount;
 
     public int Stage;
@@ -87,4 +90,17 @@ public class Singleton : MonoBehaviour
         uIManagerManager.failPanel.SetActive(false);
         uIManagerManager.timeTxt.text = curruntTime.ToString("N2");
     }
+      public IEnumerator OpenPicture() 
+      {
+        backGround.SetActive(true);
+        backSprite = backGround.GetComponent<SpriteRenderer>();
+        for (int i = 0; i< spriteListSO.sprites.Count; i++)
+        {
+            backSprite.sprite = spriteListSO.sprites[i];
+            Debug.Log("배경 스프라이트 변경: " + backSprite.sprite.name);
+            yield return new WaitForSeconds(0.1f); // 카드 생성 간격
+        }
+        uIManagerManager.clearPanle.SetActive(true);
+        gameManager.gameState = GameState.End;
+      }
 }

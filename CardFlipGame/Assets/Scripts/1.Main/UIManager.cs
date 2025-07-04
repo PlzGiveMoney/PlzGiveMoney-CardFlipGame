@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
         switch (Singleton.Instance.gameManager.gameState)
         {
             case GameState.Start:
+                Singleton.Instance.backGround.SetActive(false);
                 MainUI.SetActive(true);
                 GameUI.SetActive(false);
                 MainBackGround.SetActive(true);
@@ -132,11 +134,13 @@ public class UIManager : MonoBehaviour
             Singleton.Instance.Stage = 0; // 스테이지 초기화
         }
         Singleton.Instance.gameManager.setGame();
+        Singleton.Instance.backGround.SetActive(false);
     }
 
     public void OnRestartButton()
     {
         Singleton.Instance.gameManager.setGame();
+        Singleton.Instance.backGround.SetActive(false);
     }
 
     public void EnterStageHelp()

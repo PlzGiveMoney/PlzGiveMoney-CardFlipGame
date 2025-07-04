@@ -1,32 +1,32 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-using System.Collections.Generic; // List¸¦ »ç¿ëÇÏ·Á°í
+using System.Collections.Generic; // Listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½
 
 public class SpriteListSOGenerator
 {
-    [MenuItem("CardFlipGame/Generate SpriteListSO from Images_1")] //»ó´Ü ¸Þ´º¿¡ Ãß°¡
+    [MenuItem("CardFlipGame/Generate SpriteListSO from Images_1")] //ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
     public static void GenerateSO()
     {
         string assetPath = "Assets/Scripts/1.Main/SpriteListSO.asset";
         SpriteListSO so = AssetDatabase.LoadAssetAtPath<SpriteListSO>(assetPath);
 
-        // Resources °æ·Î ±âÁØ
+        // Resources ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         string resourcePath = "package/Images_1";
         Sprite[] sprites = Resources.LoadAll<Sprite>(resourcePath);
 
-        if (so == null) //SOÆÄÀÏÀÌ ¾ø´Ù¸é »ý¼º
+        if (so == null) //SOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             so = ScriptableObject.CreateInstance<SpriteListSO>();
-            AssetDatabase.CreateAsset(so, assetPath);//°ýÈ£¾È¿¡´Â »ý¼ºµÉ ¿ÀºêÁ§Æ®¿Í °æ·Î + ÆÄÀÏ¸íÀ» ³ÖÀ½ ex) "Assets/Resources/SpriteListSO.asset"
+            AssetDatabase.CreateAsset(so, assetPath);//ï¿½ï¿½È£ï¿½È¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ex) "Assets/Resources/SpriteListSO.asset"
         }
 
         so.sprites = new List<Sprite>(sprites);
 
-        EditorUtility.SetDirty(so); //À¯´ÏÆ¼¿¡°Ô ÀÌ ¿ÀºêÁ§Æ®°¡ º¯°æµÇ¾ú´Ù´Â °ÍÀ» ¾Ë·ÁÁÜ
-        AssetDatabase.SaveAssets(); //¿¡¼ÂÀ» ÀúÀåÇÔ
+        EditorUtility.SetDirty(so); //ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½
+        AssetDatabase.SaveAssets(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        Debug.Log("½ºÇÁ¶óÀÌÆ® " + sprites.Length + " °³ µî·Ï¿Ï·á");
-        Selection.activeObject = so; //Project Ã¢¿¡¼­ »ý¼ºµÈ SO¸¦ ¼±ÅÃ
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® " + sprites.Length + " ï¿½ï¿½ ï¿½ï¿½Ï¿Ï·ï¿½");
+        Selection.activeObject = so; //Project Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
