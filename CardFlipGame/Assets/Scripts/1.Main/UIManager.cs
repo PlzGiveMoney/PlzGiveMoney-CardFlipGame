@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject MainBackGround;
 
+    public GameObject MainMenuBtn;
+
     public Vector3 Origin;
     private void Start()
     {
@@ -34,13 +36,14 @@ public class UIManager : MonoBehaviour
                 MainUI.SetActive(true);
                 GameUI.SetActive(false);
                 MainBackGround.SetActive(true);
+                MainMenuBtn.SetActive(false);
                 coroutine = StartCoroutine(BackGroundMove());
                 break;
             case GameState.Playing:
                 MainUI.SetActive(false);
                 GameUI.SetActive(true);
                 MainBackGround.SetActive(false);
-                Debug.Log("Playing State");
+                MainMenuBtn.SetActive(true);
                 StopCoroutine(coroutine);
                 MainBackGround.transform.localPosition = Origin; // 배경 위치 초기화
                 Singleton.Instance.curruntTime -= Time.deltaTime;
@@ -88,8 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void OnMainButton()
     {
-        //SceneManager.LoadScene("MainScean");
-        Debug.Log("Main Button Clicked");
+        Singleton.Instance.gameManager.gameState = GameState.Start;
     }
     public void OnStageButton()
     {
@@ -97,11 +99,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void OnStartButton()
-    {
-        Singleton.Instance.gameManager.setGame();
-    }
-
-    public void OnRestartButton()
     {
         Singleton.Instance.gameManager.setGame();
     }
