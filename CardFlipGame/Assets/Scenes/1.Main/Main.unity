@@ -2043,6 +2043,7 @@ MonoBehaviour:
   stageClearSFX: {fileID: 8300000, guid: 85f8fbc16a435bf4b8bfc7b8bfb20b37, type: 3}
   stageFailSFX: {fileID: 8300000, guid: 62bffc517b438534a93b2daec1b65869, type: 3}
   creadtCardSFX: {fileID: 8300000, guid: 01e83115cdf1c3844a85cd1e74b193b0, type: 3}
+  audioListener: {fileID: 450574057}
   volumeSlider: {fileID: 1310808464}
   sfxvolumeSlider: {fileID: 1687658929}
 --- !u!1 &762689317
@@ -4171,7 +4172,6 @@ RectTransform:
   - {fileID: 893163337}
   - {fileID: 1966627879}
   - {fileID: 334221346}
-  - {fileID: 1903950800}
   m_Father: {fileID: 1737173188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5154,6 +5154,7 @@ RectTransform:
   - {fileID: 894574920}
   - {fileID: 303804778}
   - {fileID: 1404210567}
+  - {fileID: 1903950800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5553,7 +5554,7 @@ RectTransform:
   - {fileID: 1386168306}
   - {fileID: 1891560515}
   - {fileID: 889421111}
-  m_Father: {fileID: 1404210567}
+  m_Father: {fileID: 1737173188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
