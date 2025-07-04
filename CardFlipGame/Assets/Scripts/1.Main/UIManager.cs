@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
-    //���� �ð��� ������ �ؽ�Ʈ
     public Text timeTxt;
 
     //게임이 끝났을 때 나오는 패널

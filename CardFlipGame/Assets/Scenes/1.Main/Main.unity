@@ -1001,6 +1001,8 @@ MonoBehaviour:
   soundManager: {fileID: 662809356}
   uIManagerManager: {fileID: 1364604466}
   gameManager: {fileID: 1665545112}
+  backSprite: {fileID: 0}
+  backGround: {fileID: 1377103419}
   CardTypeCount: 0
   Stage: 0
 --- !u!4 &176070655
@@ -5007,6 +5009,11 @@ MonoBehaviour:
   OptionMainBtn: {fileID: 272700853}
   Origin: {x: 0, y: 0, z: 0}
   OptionUI: {fileID: 1903950799}
+--- !u!1 &1377103419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8050945248494388666, guid: e72f43aaa2e11224690006d2726a3549, type: 3}
+  m_PrefabInstance: {fileID: 492859761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1385872122
 GameObject:
   m_ObjectHideFlags: 0
